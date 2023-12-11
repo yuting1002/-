@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>電商服務表單</title>
+</head>
+<body>
+    <h1>查詢Chinese-Hakka</h1>
+    <input type="text" id="query" placeholder="Enter Chinese word">
+    <button onclick="search()">Search</button>
+    <p id="result"></p>
+
+    <script>
+        function search() {
+            var query = document.getElementById('query').value;
+            var url = 'https://script.google.com/macros/s/AKfycbxUU06t8JTijT3q1t05hXT3f5wyq-LSMnoEd5untTcaEloBQvRIQnydJGWJ5uUSnBSDGQ/exec?q=' + encodeURIComponent(query);
+
+            fetch(url)
+                .then(response => response.text())
+                .then(text => document.getElementById('result').innerText = text)
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
